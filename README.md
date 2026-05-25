@@ -1,7 +1,7 @@
 # GramPay — Voice-First UPI for Rural India
 ### National Buildathon 2026 | Fintech for Bharat
 
-## Short Description (for submission — 198 words)
+## Short Description
 
 GramPay is a voice-first UPI payment solution built for India's 450M+ rural citizens who are excluded from digital payments due to language barriers and low digital literacy.
 
