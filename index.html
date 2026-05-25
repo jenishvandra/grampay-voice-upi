@@ -32,7 +32,7 @@
   body::before {
     content: '';
     position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3CfeDisplacementMap in='SourceGraphic' scale='50' /%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
     pointer-events: none; z-index: 0; opacity: 0.4;
   }
 
@@ -197,7 +197,7 @@
     margin: 0.5rem auto; font-size: 1.5rem;
     box-shadow: 0 0 0 0 rgba(2,195,154,0.5);
     animation: voice-pulse 2s ease-in-out infinite;
-    cursor: pointer;
+    cursor: pointer; border: none;
   }
   @keyframes voice-pulse {
     0% { box-shadow: 0 0 0 0 rgba(2,195,154,0.5); }
@@ -439,7 +439,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-bg-circle"></div>
   <div class="hero-bg-circle"></div>
 
@@ -487,7 +487,7 @@
             <div class="phone-balance-amount">₹12,450</div>
             <div style="font-size:0.55rem;color:var(--gray);margin-top:0.2rem">Last updated: Just now</div>
           </div>
-          <div class="voice-btn" id="heroVoiceBtn" onclick="heroVoiceAnim()">🎙️</div>
+          <button class="voice-btn" id="heroVoiceBtn" onclick="heroVoiceAnim()">🎙️</button>
           <div class="voice-hint" id="heroVoiceHint">बोलिए... "Ramu ko 500 bhejo"</div>
           <div class="phone-txn">
             <div class="txn-icon">✅</div>
@@ -497,4 +497,276 @@
             </div>
             <div class="txn-amt out">-₹500</div>
           </div>
-          <div class="phone-tx
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO SECTION -->
+<section class="section" id="demo">
+  <div class="section-inner">
+    <div class="section-tag">🎙️ TRY THE DEMO</div>
+    <h2>Test Voice Payment<span>.</span></h2>
+    <p class="section-sub">Experience the simplicity of voice-based UPI. Speak naturally in any language and watch the magic happen.</p>
+
+    <div class="demo-area">
+      <div class="lang-selector">
+        <button class="lang-btn active" onclick="changeLang('english')">🇬🇧 English</button>
+        <button class="lang-btn" onclick="changeLang('hindi')">🇮🇳 हिंदी</button>
+        <button class="lang-btn" onclick="changeLang('gujarati')">🇮🇳 ગુજરાતી</button>
+        <button class="lang-btn" onclick="changeLang('marathi')">🇮🇳 मराठी</button>
+      </div>
+
+      <button class="voice-demo-btn" id="demoBtn" onclick="startVoiceDemo()">🎙️ Start Voice Input</button>
+      
+      <div class="transcript-box" id="transcript">Listening for voice input...</div>
+
+      <div class="payment-confirm" id="confirm">
+        <div class="confirm-row">
+          <span class="confirm-label">Recipient</span>
+          <span class="confirm-value" id="confirmRecipient">Ramu Kisan</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Amount</span>
+          <span class="confirm-amount" id="confirmAmount">₹500</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-label">Language</span>
+          <span class="confirm-value" id="confirmLang">English</span>
+        </div>
+        <div class="confirm-btns">
+          <button class="confirm-yes" onclick="confirmPayment()">✓ Confirm</button>
+          <button class="confirm-no" onclick="cancelPayment()">✗ Cancel</button>
+        </div>
+      </div>
+
+      <div class="success-toast" id="success">
+        <div class="success-icon">✅</div>
+        <div class="success-text">
+          <h4>Payment Successful!</h4>
+          <p id="successMsg">₹500 sent to Ramu Kisan</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div class="section-tag">🎯 HOW IT WORKS</div>
+    <h2>Three Simple <span>Steps</span></h2>
+    <p class="section-sub">GramPay makes payments as simple as talking to a friend.</p>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-step">1</div>
+        <div class="how-emoji">🎙️</div>
+        <h3>Speak Your Intent</h3>
+        <p>Say who you want to pay and how much, in your language. "Ramu ko 500 bhejo" or "Send 200 to Mom"</p>
+      </div>
+      <div class="how-card">
+        <div class="how-step">2</div>
+        <div class="how-emoji">🧠</div>
+        <h3>AI Understands Context</h3>
+        <p>Our voice AI instantly processes the payment intent, recognizes the recipient, and confirms the amount.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-step">3</div>
+        <div class="how-emoji">✅</div>
+        <h3>One Voice Confirmation</h3>
+        <p>Say "confirm" or tap once. Your money reaches instantly via NPCI's UPI network.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-bg">
+  <div class="section section-inner">
+    <div class="section-tag">✨ KEY FEATURES</div>
+    <h2>Built for <span>Bharat</span></h2>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feat-icon teal">🌐</div>
+        <div>
+          <h4>12 Local Languages</h4>
+          <p>Hindi, Gujarati, Marathi, Tamil, Telugu, Kannada, and more. No language barrier.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon mint">📱</div>
+        <div>
+          <h4>Basic Phone Support</h4>
+          <p>Works on 2G, dumb phones, and basic feature phones. No internet required initially.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon saffron">🔒</div>
+        <div>
+          <h4>Bank-Grade Security</h4>
+          <p>256-bit encryption, biometric auth, and direct UPI integration. Your money is safe.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon purple">⚡</div>
+        <div>
+          <h4>Instant Settlement</h4>
+          <p>Real-time UPI transfers. Money reaches instantly via NPCI network.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-tag">🌟 OUR IMPACT</div>
+    <h2>For Rural <span>India</span></h2>
+    
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-num">450M+</div>
+        <div class="impact-label">Potential Users</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">₹2.5T</div>
+        <div class="impact-label">Market Opportunity</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">12</div>
+        <div class="impact-label">Languages Supported</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-num">0%</div>
+        <div class="impact-label">Device Requirements</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Gram<span>Pay</span></div>
+  <p>Voice-First UPI for Rural India • Built for Bharat</p>
+  <div class="badges">
+    <span class="fbadge">🏆 Buildathon 2026</span>
+    <span class="fbadge">🇮🇳 Made in India</span>
+    <span class="fbadge">💡 Fintech</span>
+  </div>
+</footer>
+
+<script>
+  let currentLang = 'english';
+  let isListening = false;
+
+  // SCROLL FUNCTIONS
+  function scrollToDemo() {
+    const demo = document.getElementById('demo');
+    demo.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function scrollToHow() {
+    const how = document.getElementById('how');
+    how.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // HERO VOICE ANIMATION
+  function heroVoiceAnim() {
+    const btn = document.getElementById('heroVoiceBtn');
+    const hint = document.getElementById('heroVoiceHint');
+    
+    btn.style.animation = 'none';
+    setTimeout(() => {
+      btn.style.animation = 'voice-pulse 2s ease-in-out infinite';
+    }, 10);
+  }
+
+  // DEMO VOICE FUNCTIONALITY
+  function changeLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+  }
+
+  function startVoiceDemo() {
+    const btn = document.getElementById('demoBtn');
+    const transcript = document.getElementById('transcript');
+    
+    if (isListening) {
+      stopListening();
+      return;
+    }
+
+    isListening = true;
+    btn.textContent = '🛑 Stop Listening';
+    btn.classList.add('listening');
+    transcript.textContent = 'Listening... speak now';
+    transcript.classList.add('has-text');
+
+    // Simulate voice input after 2 seconds
+    setTimeout(() => {
+      if (isListening) {
+        simulateVoiceInput();
+      }
+    }, 2000);
+  }
+
+  function stopListening() {
+    isListening = false;
+    const btn = document.getElementById('demoBtn');
+    btn.textContent = '🎙️ Start Voice Input';
+    btn.classList.remove('listening');
+  }
+
+  function simulateVoiceInput() {
+    const transcript = document.getElementById('transcript');
+    const samples = {
+      english: 'Send 500 rupees to Ramu',
+      hindi: 'रामु को 500 रुपये भेजो',
+      gujarati: 'રામુને 500 રૂપિયા મોકલો',
+      marathi: 'रामुला 500 रुपये पाठव'
+    };
+
+    transcript.textContent = `Recognized: "${samples[currentLang]}"`;
+    
+    setTimeout(() => {
+      stopListening();
+      showConfirmation();
+    }, 1500);
+  }
+
+  function showConfirmation() {
+    const confirm = document.getElementById('confirm');
+    document.getElementById('confirmLang').textContent = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+    confirm.classList.add('show');
+  }
+
+  function confirmPayment() {
+    const confirm = document.getElementById('confirm');
+    const success = document.getElementById('success');
+    
+    confirm.classList.remove('show');
+    success.classList.add('show');
+
+    setTimeout(() => {
+      success.classList.remove('show');
+      confirm.classList.remove('show');
+      document.getElementById('transcript').textContent = 'Listening for voice input...';
+    }, 3000);
+  }
+
+  function cancelPayment() {
+    const confirm = document.getElementById('confirm');
+    confirm.classList.remove('show');
+    document.getElementById('transcript').textContent = 'Payment cancelled. Try again!';
+  }
+</script>
+
+</body>
+</html>
